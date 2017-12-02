@@ -87,6 +87,7 @@ class MochadLight(Light):
 
     def turn_on(self, **kwargs):
         """Send the command to turn the light on."""
+        self.device.send_cmd('on')
         self._brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
         self.device.send_cmd("xdim {}".format(self._brightness))
         self._controller.read_data()
